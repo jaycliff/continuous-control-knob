@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Continuous Control Knob</title>
+        <!--
+            http://codepen.io/blucube/pen/cudAz
+            http://kaisarcode.com/javascript-rotate-dial
+            http://stackoverflow.com/questions/2676719/calculating-the-angle-between-the-line-defined-by-two-points
+            https://www.raywenderlich.com/9864/how-to-create-a-rotating-wheel-control-with-uikit
+            http://www.mathwarehouse.com/algebra/distance_formula/index.php
+            http://www.soultravelmultimedia.com/2013/05/11/40-outstanding-user-interface-knobs/
+        -->
+        <!-- <link rel="shortcut icon" href="https://myaccount.hetzner.co.za/favicon.ico" type="image/x-icon" /> -->
+        <link rel="stylesheet" type="text/css" href="css/normal.css" />
+        <style type="text/css">
+            /* @import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:300); */
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                background-color: #ffffff;
+                font-size: 100%;
+                font-family: "Open Sans", sans-serif;
+                color: #404040;
+                text-align: center;
+            }
+            .continuous-control-knob {
+                opacity: 1;
+            }
+            span.square {
+                border: solid 1px #000000;
+                display: inline-block;
+                height: 50px;
+                opacity: 0.1;
+                width: 50px;
+            }
+            .continuous-control-knob .ck-band:after {
+                height: 0.3em;
+                left: -0.8em;
+                margin-top: -0.15em;
+                width: 0.5em;
+            }
+            .continuous-control-knob .active:after {
+                background-color: rgba(255, 0, 0, 0.5);
+            }
+        </style>
+        <!-- <script type="text/javascript" src="lib/jquery-1.12.4.min.js"></script> -->
+        <script type="text/javascript" src="lib/jquery-3.0.0.min.js"></script>
+        <script type="text/javascript" src="lib/jquery.domxy.js"></script>
+        <script type="text/javascript" src="lib/jquery-continuous-control-knob.js"></script>
+        <script type="text/javascript">
+            if (typeof Number.valueByStep !== "function") {
+                Number.valueByStep = function valueByStep(value, step) {
+                    "use strict";
+                    if (typeof step !== "number") {
+                        step = 1;
+                    }
+                    return +((Math.round(value / step) * step).toFixed(Number.decimalDigitsLength(step)));
+                };
+            }
+            if (typeof Number.decimalDigitsLength !== "function") {
+                Number.decimalDigitsLength = function decimalDigitsLength(num) {
+                    "use strict";
+                    var string, dot_index;
+                    if (typeof num !== "number") {
+                        throw new TypeError('parameter must be a number');
+                    }
+                    string = String(num);
+                    dot_index = string.indexOf('.');
+                    if (dot_index < 0) {
+                        return 0;
+                    }
+                    return string.length - (dot_index + 1);
+                };
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Template by Jaycliff Arcilla -->
+        <div>
+            <span class="square"></span>
+            <span style="display: inline-block;" id="container"></span>
+            <span class="square"></span>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                "use strict";
+                var cck = $.createContinuousControlKnob({ min: 0, max: 1, value: 0, step: 0.01, numberOfDecalPairs: 15, showBands: true })
+                    .attachTo('#container')
+                    .on('mousedown focus mousewheel blur click mouseup keydown increment decrement', function (event) {
+                        var event_type = event.type;
+                        console.log(event_type);
+                        switch (event_type) {
+                        case 'focus':
+                            //this.trigger('blur');
+                            break;
+                        //case 'mousedown':
+                        //case 'keydown':
+                        case 'mousewheel':
+                            event.preventDefault();
+                            break;
+                        case 'increment':
+                            console.log('ADD');
+                            break;
+                        case 'decrement':
+                            console.log('SUBTRACT');
+                            break;
+                        }
+                    })
+                    .on('input change', function (event, value) {
+                        console.log('EVENT: ' + event.type + ', VALUE: ' + value);
+                    });
+                cck.getElement().css('opacity', 1);
+                window.cck = cck;
+            });
+        </script>
+    </body>
+</html>

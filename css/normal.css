@@ -1,0 +1,154 @@
+.continuous-control-knob {
+    display: inline-block;
+    font-size: 12px;
+    overflow: hidden;
+    padding: 1.5em;
+    position: relative;
+    height: 10em;
+    width: 10em;
+}
+.continuous-control-knob.disabled {
+    opacity: 0.5 !important;
+}
+.continuous-control-knob .cck-subwrap {
+    background-color: #f8f8f8;
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    /* border: solid 0.25em #e4e4e4; */
+    /* border: solid 0.25em #c0c0c0; */
+    box-shadow: 0 0.2em 0.1em 0.05em rgba(255, 255, 255, 0.1) inset, 0 -0.2em 0.1em 0.05em rgba(0, 0, 0, 0.05) inset, 0 0.5em 0.65em 0 rgba(0, 0, 0, 0.05), inset 0 0 0 0.9em rgba(0, 0, 0, 0.01);
+}
+.continuous-control-knob .cck-anchor {
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.continuous-control-knob.disabled .cck-anchor {
+    cursor: default;
+}
+.continuous-control-knob .cck-handle {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.continuous-control-knob .cck-decal {
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.continuous-control-knob .cck-decal:before,
+.continuous-control-knob .cck-decal:after {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10%;
+    content: " ";
+    display: block;
+    height: 3%;
+    left: 0;
+    margin-left: 0;
+    margin-top: -1.5%;
+    position: absolute;
+    top: 50%;
+    width: 8%;
+}
+.continuous-control-knob .cck-decal:after {
+    left: auto;
+    right: 0;
+}
+.continuous-control-knob .cck-value {
+    display: block;
+    color: #808080;
+    font-family: Arial;
+    font-size: 1em;
+    height: 20px;
+    left: 50%;
+    line-height: 20px;
+    margin: -10px 0 0 -50px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100px;
+}
+.continuous-control-knob .cck-label-wrap {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: auto;
+}
+.continuous-control-knob .cck-min-label,
+.continuous-control-knob .cck-max-label {
+    bottom: -0.25em;
+    display: block;
+    font-family: "Arial", sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    -webkit-font-smoothing: antialiased;
+    font-size: 70%;
+    position: absolute;
+    opacity: 1;
+    pointer-events: none;
+}
+.continuous-control-knob .cck-min-label {
+    left: -1.5em;
+}
+.continuous-control-knob .cck-max-label {
+    right: -1.5em;
+}
+.continuous-control-knob .cck-bands-wrap {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.continuous-control-knob .cck-band {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: visible;
+}
+.continuous-control-knob .cck-band:after {
+    display: block;
+    border-radius: 12%;
+    content: " ";
+    width: 0.4em;
+    height: 0.4em;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: -0.8em;
+    top: 50%;
+    margin-top: -0.2em;
+    -webkit-transition: all 180ms ease-out;
+    -moz-transition: all 180ms ease-out;
+    -ms-transition: all 180ms ease-out;
+    -o-transition: all 180ms ease-out;
+    transition: all 180ms ease-out;
+}
+.continuous-control-knob .cck-band.active:after {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+.continuous-control-knob .cck-transition .cck-handle,
+.continuous-control-knob .cck-transition .cck-band.active:after {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
