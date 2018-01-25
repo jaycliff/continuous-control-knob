@@ -62,7 +62,7 @@
             // http://stackoverflow.com/questions/18783944/soundcloud-api-authentication-nodewebkit-redirect-uri-and-local-file-system
             jQuery(document).ready(function ($) {
                 "use strict";
-                var cck = $.createContinuousControlKnob({ min: 0, max: 1, value: 0, step: 0.01, numberOfDecalPairs: 15, showBands: true })
+                var cck = $.createContinuousControlKnob({ min: 0, max: 1, value: 0, step: 0.01, numberOfDecalPairs: 15, showBands: true, useVerticalSwipe: true })
                     .attachTo('#container')
                     .on('mousedown focus mousewheel blur click mouseup keydown increment decrement', function (event) {
                         var event_type = event.type;
