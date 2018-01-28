@@ -136,20 +136,12 @@
     left: -0.8em;
     top: 50%;
     margin-top: -0.2em;
-    -webkit-transition: all 180ms ease-out;
-    -moz-transition: all 180ms ease-out;
-    -ms-transition: all 180ms ease-out;
-    -o-transition: all 180ms ease-out;
-    transition: all 180ms ease-out;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
 }
 .continuous-control-knob .cck-band.active:after {
     background-color: rgba(255, 0, 0, 0.5);
-}
-.continuous-control-knob .cck-transition .cck-handle,
-.continuous-control-knob .cck-transition .cck-band.active:after {
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
 }
