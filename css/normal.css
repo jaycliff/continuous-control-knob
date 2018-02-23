@@ -1,10 +1,10 @@
 .continuous-control-knob {
     display: inline-block;
     font-size: 12px;
+    height: 10em;
     overflow: hidden;
     padding: 1.5em;
     position: relative;
-    height: 10em;
     width: 10em;
 }
 .continuous-control-knob.disabled {
@@ -12,14 +12,14 @@
 }
 .continuous-control-knob .cck-subwrap {
     background-color: #f8f8f8;
-    display: block;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
     /* border: solid 0.25em #e4e4e4; */
     /* border: solid 0.25em #c0c0c0; */
+    border-radius: 50%;
     box-shadow: 0 0.2em 0.1em 0.05em rgba(255, 255, 255, 0.1) inset, 0 -0.2em 0.1em 0.05em rgba(0, 0, 0, 0.05) inset, 0 0.5em 0.65em 0 rgba(0, 0, 0, 0.05), inset 0 0 0 0.9em rgba(0, 0, 0, 0.01);
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
 }
 .continuous-control-knob .cck-anchor {
     bottom: 0;
@@ -35,16 +35,17 @@
     cursor: default;
 }
 .continuous-control-knob .cck-handle {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
     border-radius: 50%;
+    display: block;
+    height: 100%;
+    position: absolute;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
     -o-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
+    width: 100%;
+    will-change: transform; /* Fix for Firefox's annoying jagged edges when applying rotation */
 }
 .continuous-control-knob .cck-decal {
     display: block;
@@ -72,8 +73,8 @@
     right: 0.05em;
 }
 .continuous-control-knob .cck-value {
-    display: block;
     color: #808080;
+    display: block;
     font-family: Arial;
     font-size: 1em;
     height: 20px;
@@ -95,15 +96,16 @@
 .continuous-control-knob .cck-min-label,
 .continuous-control-knob .cck-max-label {
     bottom: -0.25em;
+    color: rgba(0, 0, 0, 0.5);
     display: block;
     font-family: "Arial", sans-serif;
-    color: rgba(0, 0, 0, 0.5);
-    text-transform: uppercase;
-    -webkit-font-smoothing: antialiased;
     font-size: 70%;
-    position: absolute;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
     opacity: 1;
     pointer-events: none;
+    position: absolute;
+    text-transform: uppercase;
 }
 .continuous-control-knob .cck-min-label {
     left: -1.5em;
@@ -118,29 +120,31 @@
 }
 .continuous-control-knob .cck-band {
     display: block;
-    position: absolute;
-    width: 100%;
     height: 100%;
-    top: 0;
     left: 0;
     overflow: visible;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    will-change: transform; /* Fix for Firefox's annoying jagged edges when applying rotation */
 }
 .continuous-control-knob .cck-band:after {
-    display: block;
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 12%;
     content: " ";
-    width: 0.4em;
+    display: block;
     height: 0.4em;
-    background-color: rgba(0, 0, 0, 0.1);
-    position: absolute;
     left: -0.8em;
-    top: 50%;
     margin-top: -0.2em;
+    outline: solid 1px transparent; /* Fix for Firefox's annoying jagged edges when applying rotation */
+    position: absolute;
+    top: 50%;
     -moz-transition: all 0.1s;
     -ms-transition: all 0.1s;
     -o-transition: all 0.1s;
     -webkit-transition: all 0.1s;
     transition: all 0.1s;
+    width: 0.4em;
 }
 .continuous-control-knob .cck-band.active:after {
     background-color: rgba(255, 0, 0, 0.5);
